@@ -56,4 +56,8 @@ class RelayStartParser(Base):
             print('Excepted {} on {}'.format(e, link))
         finally:
             d['Изображения'] = images
+
+        title = soup.find('div', {'class': 'product-page__desc'}).h2.text.strip()
+        d['Название продукции'] = title
+
         return d
