@@ -16,7 +16,7 @@ class RelayStartParser(Base):
         links = []
         for link in curr[0].find_all('a'):
             if link['href'].startswith('/products/rele') and link['href'][len('/products/rele'):].count('/') > 1:
-                curr_link = '{}{}'.format(url[:-10], link['href'])
+                curr_link = 'http://relay-start.ru{}'.format(link['href'])
                 curr_code = requests.get(curr_link).content
                 links.append((curr_link, curr_code))
 
