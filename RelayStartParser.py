@@ -34,9 +34,9 @@ class RelayStartParser(Base):
             'Изображения': '',
             'Цена производителя': ''
         }
-        keys = ([key.text.strip() for key in soup.find_all('div', {'class': 'product-field__label'})])
-        values = ([value.text.strip() for value in soup.find_all('div', {'class': 'product-field__value'})])
-        d.update(dict((list(zip(keys, values)))))
+        keys = (key.text.strip() for key in soup.find_all('div', {'class': 'product-field__label'}))
+        values = (value.text.strip() for value in soup.find_all('div', {'class': 'product-field__value'}))
+        d.update(dict(zip(keys, values)))
         classification = ''
         try:
             dv = soup.find('div', {'class': 'pathway uk-flex uk-flex-wrap uk-flex-middle'})
